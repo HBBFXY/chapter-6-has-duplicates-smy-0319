@@ -1,21 +1,26 @@
-# 在这个文件中编写代码
 def has_duplicates(lst):
     """
-    检查列表中是否有重复元素
-    参数: lst - 任意列表
-    返回: bool - 如果有重复元素返回 True，否则返回 False
+    判断列表中是否存在重复元素
+    :param lst: 输入的列表
+    :return: 如果存在重复元素返回True，否则返回False
     """
-    # 学生实现代码区域
-   
+    seen = set()
+    for item in lst:
+        if item in seen:
+            return True
+        seen.add(item)
+    return False
+# 测试用例
+test_cases = [
+    [1, 2, 3, 4, 5],          
+    [1, 2, 3, 2, 4],          
+    ['a', 'b', 'c', 'a'],     
+    [10, 20, 30, 40],         
+    [5, 5, 5, 5],             
+    []                        
+]
 
-# 主程序 - 测试函数
-if __name__ == "__main__":
-    # 学生需要提供测试用例
-    test_cases = [
-        [1, 2, 3],          # 无重复
-        [1, 2, 2],          # 有重复
-        ["a", "b", "a"],    # 字符串重复
-        []                   # 空列表
-    ]
-    
-    # 测试每个用例，编写具体测试代码
+# 调用函数并输出结果
+for i, test in enumerate(test_cases):
+    result = has_duplicates(test)
+    print(f"Test case {i+1}: {test} -> {result}")
